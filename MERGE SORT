@@ -1,0 +1,51 @@
+#include<stdio.h>
+void merge(int *,int,int,int);
+void sort(int *,int,int,int);
+int main()
+{
+	int n,i=0;
+	printf("Enter the number of elememts:");
+	scanf("%d",&n);
+	int a[n];
+	for(i;i<n;i++)
+	{
+		printf("Enter the %d element:",i+1);
+		scanf("%d",&a[i]);
+	}
+	merge(a,0,n-1,n);
+	printf("Sorted using\"MERGE SORT\":");
+	for(i=0;i<n;i++) printf("%d ",a[i]);
+}
+void merge(int *a,int low,int high,int n)
+{	
+	if(n==1||n==0);
+	else if(low!=high)
+	{
+		int mid=(low+high)/2;		
+		merge(a,low,mid,n);
+		merge(a,mid+1,high,n);
+		
+		sort(a,low,mid+1,high);
+	}
+}
+
+void sort(int *a,int i,int j,int finish)
+{
+	int k=i,l=j,z=0,temp[(finish-i)+1];
+	for(i,j;(i<l)&&(j<=finish);z++)
+	{
+		if(a[i]>a[j])
+		{
+			temp[z]=a[j];
+			j++;
+		}
+		else
+		{
+			temp[z]=a[i];
+			i++;
+		}
+	}
+	for(i;i<l;i++,z++) temp[z]=a[i];
+	for(j;j<=finish;j++,z++) temp[z]=a[j];
+	for(k,z=0;k<=finish;k++,z++) a[k]=temp[z];
+}
